@@ -16,6 +16,18 @@ public class HelloController {
     UserMapper userMapper;
 
 
+    @RequestMapping(value = "/")
+    public String home() {
+        return "Home Page";
+    }
+
+
+    @RequestMapping(value = "/test")
+    public String test() {
+        return "Test Page";
+    }
+
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello(@RequestParam(value = "name", required = false, defaultValue = "ling") String personName) {
         if (personName != null) {
