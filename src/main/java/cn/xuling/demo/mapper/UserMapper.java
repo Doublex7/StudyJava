@@ -1,7 +1,7 @@
-package cn.xuling.demo.Mapper;
+package cn.xuling.demo.mapper;
 
 
-import cn.xuling.demo.Entity.User;
+import cn.xuling.demo.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

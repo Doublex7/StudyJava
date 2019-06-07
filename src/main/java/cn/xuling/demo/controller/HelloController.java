@@ -1,19 +1,35 @@
-package cn.xuling.demo.Controller;
+package cn.xuling.demo.controller;
 
-import cn.xuling.demo.Entity.User;
-import cn.xuling.demo.Mapper.UserMapper;
+import cn.xuling.demo.entity.User;
+import cn.xuling.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 public class HelloController {
+
+
+    @Value("${spring.application.name}")
+    private String name;
+
+
+    @Value("${default:default}")
+    private String defaultName;
 
 
     @SuppressWarnings("all")
     @Autowired
     UserMapper userMapper;
+
+
+    @RequestMapping("/test/default")
+    public String testName() {
+        return defaultName;
+    }
 
 
     @RequestMapping("/user/{name}")

@@ -1,4 +1,4 @@
-package cn.xuling.demo.Mapper;
+package cn.xuling.demo.mapper;
 
 
 import org.apache.ibatis.annotations.Param;

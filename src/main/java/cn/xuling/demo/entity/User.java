@@ -1,4 +1,4 @@
-package cn.xuling.demo.Entity;
+package cn.xuling.demo.entity;
 
 public class User {
     private int id;
