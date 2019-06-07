@@ -16,11 +16,15 @@ public class HelloController {
     UserMapper userMapper;
 
 
-    @RequestMapping(value = "/")
-    public String home() {
-        return "Home Page";
-    }
+    @RequestMapping("/user/{name}")
+    public User getUser(@PathVariable("name") String name) {
+        List<User> userList = userMapper.listByUsername(name);
 
+        if (userList.size() == 0) {
+            return null;
+        }
+        return userList.get(0);
+    }
 
     @RequestMapping(value = "/test")
     public String test() {
