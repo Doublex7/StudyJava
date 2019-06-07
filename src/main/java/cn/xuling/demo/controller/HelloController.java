@@ -42,11 +42,6 @@ public class HelloController {
         return userList.get(0);
     }
 
-    @RequestMapping(value = "/test")
-    public String test() {
-        return "Test Page";
-    }
-
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello(@RequestParam(value = "name", required = false, defaultValue = "ling") String personName) {
