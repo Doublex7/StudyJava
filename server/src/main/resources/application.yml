@@ -14,6 +14,9 @@ spring:
   groovy:
     template:
       check-template-location: false
+  devtools:
+    restart:
+      enabled: true
 
 mybatis:
   configuration:
