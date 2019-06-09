@@ -1,6 +1,6 @@
-# demo
+# webapp
 
-> Study Vue & SpringBoot
+> Study SpringBoot & Vue.js
 
 ## Build Setup
 

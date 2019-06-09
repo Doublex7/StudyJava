@@ -1,0 +1,29 @@
+group 'cn.xu-ling'
+version '0.0.1-SNAPSHOT'
+
+task copyHtml(type: Copy) {
+    group = 'build'
+    description = '复制编译后的index.html到 server 的 resource 目录'
+    from 'client/dist/index.html'
+    into 'server/build/resources/main/static'
+}
+
+task copyStatic(type: Copy, dependsOn: 'copyHtml') {
+    group = 'build'
+    description = '复制编译后的静态文件到 server 的 resource 目录'
+
+    from 'client/dist/static'
+    into 'server/build/resources/main/static/static'
+}
+
+copyStatic.mustRunAfter('client:build')
+
+task mergeBuild(dependsOn: ['client:build', ':copyStatic', 'server:bootJar']) {
+    group = 'build'
+    description = '合并编译输出'
+}
+
+task independentBuild(dependsOn: ['client:build', 'server:bootJar']) {
+    group = 'build'
+    description = '独立编译输出'
+}
