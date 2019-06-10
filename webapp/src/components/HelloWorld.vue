@@ -35,7 +35,6 @@
           Twitter
         </a>
       </li>
-      <br>
       <li>
         <a
           href="http://vuejs-templates.github.io/webpack/"
@@ -89,9 +88,9 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
-    }
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -16,15 +16,15 @@ export default {
       password: '',
       loginButtonText: 'Sign in',
       signUpButtonText: 'Sign up'
-    }
+    };
   },
   methods: {
     login: function () {
       if (this.username === '' || this.password === '') {
-        this.$message.error('用户名和密码不能为空')
-        return
+        this.$message.error('用户名和密码不能为空');
+        return;
       }
-      let url = 'server/user/login/' + this.username + '/' + this.password
+      let url = 'server/user/login/' + this.username + '/' + this.password;
       this.$http({
         url: url,
         method: 'post',
@@ -33,34 +33,34 @@ export default {
           password: this.password
         }
       }).then((res) => {
-        let message
-        let type
+        let message;
+        let type;
         switch (Number(res.data.code)) {
           case 1:
-            message = '用户名不存在'
-            type = 'warning'
-            break
+            message = '用户名不存在';
+            type = 'warning';
+            break;
           case 2:
-            message = '密码错误'
-            type = 'error'
-            break
+            message = '密码错误';
+            type = 'error';
+            break;
           case 0:
-            message = '登录成功'
-            type = 'success'
-            break
+            message = '登录成功';
+            type = 'success';
+            break;
           default:
-            break
+            break;
         }
         this.$message({
           message: message,
           type: type
-        })
+        });
       }).catch(err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
     }
   }
-}
+};
 </script>
 
 <style scoped>
