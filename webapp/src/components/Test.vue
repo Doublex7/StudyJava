@@ -20,8 +20,44 @@ export default {
   },
   methods: {
     login: function () {
-      console.log(this.username)
-      console.log(this.password)
+      if (this.username === '' || this.password === '') {
+        this.$message.error('用户名和密码不能为空')
+        return
+      }
+      let url = 'server/user/login/' + this.username + '/' + this.password
+      this.$http({
+        url: url,
+        method: 'post',
+        data: {
+          username: this.username,
+          password: this.password
+        }
+      }).then((res) => {
+        let message
+        let type
+        switch (Number(res.data.code)) {
+          case 1:
+            message = '用户名不存在'
+            type = 'warning'
+            break
+          case 2:
+            message = '密码错误'
+            type = 'error'
+            break
+          case 0:
+            message = '登录成功'
+            type = 'success'
+            break
+          default:
+            break
+        }
+        this.$message({
+          message: message,
+          type: type
+        })
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
@@ -29,12 +65,12 @@ export default {
 
 <style scoped>
   .login-box {
-    margin: 0 auto
+    margin: 0 auto;
   }
   .username-label {
     width: 300px;
   }
   .password-label {
-    width: 300px
+    width: 300px;
   }
 </style>

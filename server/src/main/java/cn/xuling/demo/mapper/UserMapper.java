@@ -12,7 +12,7 @@ public interface UserMapper {
     /**
      * 方式1：使用注解编写SQL。
      */
-    @Select("select * from users")
+    @Select("select * from user")
     List<User> list();
 
     /**
@@ -43,5 +43,12 @@ public interface UserMapper {
 
     @SelectProvider(type = UserSqlProvider.class, method = "getBadUser")
     User getBadUser(@Param("name") String username, @Param("password") String password);
+
+
+
+    /* ------ */
+
+    @Select("select * from user where username = #{username}")
+    User getUnionUserByUsername(@Param("username") String username);
 
 }
